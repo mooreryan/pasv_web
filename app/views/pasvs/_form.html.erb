@@ -1,0 +1,42 @@
+<%= form_with(model: pasv, local: true) do |form| %>
+  <% if pasv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pasv.errors.count, "error") %> prohibited this pasv from being saved:</h2>
+
+      <ul>
+      <% pasv.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :refs_fname %>
+    <%= form.text_field :refs_fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :queries_fname %>
+    <%= form.text_field :queries_fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aligner %>
+    <%= form.text_field :aligner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :roi_start %>
+    <%= form.number_field :roi_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :roi_end %>
+    <%= form.number_field :roi_end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

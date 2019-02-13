@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Refs fname:</strong>
+  <%= @pasv.refs_fname %>
+</p>
+
+<p>
+  <strong>Queries fname:</strong>
+  <%= @pasv.queries_fname %>
+</p>
+
+<p>
+  <strong>Aligner:</strong>
+  <%= @pasv.aligner %>
+</p>
+
+<p>
+  <strong>Roi start:</strong>
+  <%= @pasv.roi_start %>
+</p>
+
+<p>
+  <strong>Roi end:</strong>
+  <%= @pasv.roi_end %>
+</p>
+
+<%= link_to 'Edit', edit_pasv_path(@pasv) %> |
+<%= link_to 'Back', pasvs_path %>

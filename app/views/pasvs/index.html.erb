@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pasvs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Refs fname</th>
+      <th>Queries fname</th>
+      <th>Aligner</th>
+      <th>Roi start</th>
+      <th>Roi end</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pasvs.each do |pasv| %>
+      <tr>
+        <td><%= pasv.refs_fname %></td>
+        <td><%= pasv.queries_fname %></td>
+        <td><%= pasv.aligner %></td>
+        <td><%= pasv.roi_start %></td>
+        <td><%= pasv.roi_end %></td>
+        <td><%= link_to 'Show', pasv %></td>
+        <td><%= link_to 'Edit', edit_pasv_path(pasv) %></td>
+        <td><%= link_to 'Destroy', pasv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pasv', new_pasv_path %>
