@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_02_13_233715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pasvs", force: :cascade do |t|
+    t.string "refs_fname"
+    t.string "queries_fname"
+    t.string "aligner"
+    t.integer "roi_start"
+    t.integer "roi_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
