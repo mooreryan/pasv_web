@@ -58,6 +58,7 @@ group :test do
   # Shoulda matchers
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'rails-controller-testing' # If you are using Rails 5.x
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

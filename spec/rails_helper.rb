@@ -58,6 +58,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Shoulda callback matchers
+  # If you're getting this error, it's probably due to classes being redefined by Spring - currently this library does not accommodate for reloaded classes. The easiest fix is to load the matchers into the test library config
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
 end
 
 # Shoulda config

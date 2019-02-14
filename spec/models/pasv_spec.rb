@@ -26,4 +26,22 @@ RSpec.describe Pasv, type: :model do
       expect(subject.to_s).to eq expected
     end
   end
+
+  context "callbacks" do
+    it { is_expected.to callback(:run_job).after(:save) }
+
+    describe "#save" do
+      it "does the thing" do
+        expected = "queries_fname: '#{subject.queries_fname}', " \
+      "refs_fname: '#{subject.refs_fname}', " \
+      "aligner: '#{subject.aligner}', " \
+      "roi_start: '#{subject.roi_start}', " \
+      "roi_end: '#{subject.roi_end}'"
+
+        expect do
+          subject.save
+        end.to output(expected).to_stdout
+      end
+    end
+  end
 end
