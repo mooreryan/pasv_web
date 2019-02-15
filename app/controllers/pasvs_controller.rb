@@ -48,6 +48,7 @@ class PasvsController < ApplicationController
   # PATCH/PUT /pasvs/1.json
   def update
     respond_to do |format|
+      # TODO with bad params, this gets passed an empty hash and doesn't try and update, so it never hits the fail condition
       if @pasv.update(pasv_params)
         format.html { redirect_to @pasv, notice: 'Pasv was successfully updated.' }
         format.json { render :show, status: :ok, location: @pasv }
