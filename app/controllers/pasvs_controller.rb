@@ -17,6 +17,13 @@ class PasvsController < ApplicationController
     if @pasv.query_file.attached?
       @query_file_preview = preview_blob @pasv.query_file
     end
+
+    # run the program
+    outdir = @pasv.run_pasv_cli
+
+    if outdir
+      send_file generate_tgz(outdir), filename: 'pasv_output.tar.gz'
+    end
   end
 
   # GET /pasvs/new
@@ -88,5 +95,13 @@ class PasvsController < ApplicationController
     blob.download do |data|
       return data.length > max_len ? "#{data[0, max_len - 3]}..." : data
     end
+  end
+
+  def generate_tgz dir
+    dir_tgz = "#{dir}.tar.gz"
+
+    `tar cf - #{dir} | pigz -c > #{dir_tgz}`
+
+    dir_tgz
   end
 end

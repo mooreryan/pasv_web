@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    abort_if (0.2.0)
     actioncable (5.2.2)
       actionpack (= 5.2.2)
       nio4r (~> 2.0)
@@ -100,6 +101,11 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
+    optimist (3.0.0)
+    parallel (1.13.0)
+    parse_fasta (2.5.2)
+    pasv_lib (0.1.1)
+      systemu (~> 2.6, >= 2.6.5)
     pg (1.1.4)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -158,6 +164,9 @@ GEM
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
+    rya (0.5.1)
+      abort_if (~> 0.2.0)
+      systemu (~> 2.6, >= 2.6.5)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -188,6 +197,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    systemu (2.6.5)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -213,17 +223,23 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  abort_if (~> 0.2.0)
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  optimist (~> 3.0)
+  parallel (~> 1.12, >= 1.12.1)
+  parse_fasta (~> 2.3)
+  pasv_lib (~> 0.1.1)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
   rails-controller-testing
   rspec-rails (~> 3.8)
+  rya (~> 0.5.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-callback-matchers (~> 1.1, >= 1.1.4)

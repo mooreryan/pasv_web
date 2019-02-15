@@ -27,3 +27,4 @@
 /config/master.key
 .ruby-*
 .idea
+.DS_Store

@@ -69,3 +69,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 end
+
+# These are all required for PASV command line program
+gem 'abort_if', '~> 0.2.0'
+gem 'parse_fasta', '~> 2.3'
+gem 'parallel', '~> 1.12', '>= 1.12.1'
+gem 'pasv_lib', '~> 0.1.1'
+gem 'optimist', '~> 3.0'
+
+# My special library!
+gem 'rya', '~> 0.5.1'
