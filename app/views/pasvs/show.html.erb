@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Refs fname:</strong>
-  <%= @pasv.refs_fname %>
-</p>
+<% if @pasv.ref_file.attached? %>
+  <!-- @post.image.present? will always return true, use attached? to check presence -->
+  <p>
+    <strong>Ref file:</strong>
+    <br>
+    <%= File.open(ActiveStorage::Blob.service.send(:path_for, @pasv.ref_file.key), "rt").read[0..100].inspect + "..."%>
+  </p>
+<% end %>
 
-<p>
-  <strong>Queries fname:</strong>
-  <%= @pasv.queries_fname %>
-</p>
+<% if @pasv.query_file.attached? %>
+  <!-- @post.image.present? will always return true, use attached? to check presence -->
+  <p>
+    <strong>Query file:</strong>
+    <br>
+    <%= File.open(ActiveStorage::Blob.service.send(:path_for, @pasv.query_file.key), "rt").read[0..100].inspect + "..."%>
+  </p>
+<% end %>
 
 <p>
   <strong>Aligner:</strong>

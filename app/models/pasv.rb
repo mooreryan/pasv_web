@@ -1,16 +1,15 @@
 class Pasv < ApplicationRecord
-  validates_presence_of :queries_fname,
-                        :refs_fname,
-                        :aligner,
+  validates_presence_of :aligner,
                         :roi_start,
                         :roi_end
+
+  has_one_attached :query_file
+  has_one_attached :ref_file
 
   after_save :run_job
 
   def to_s
-    "queries_fname: '#{self.queries_fname}', " \
-      "refs_fname: '#{self.refs_fname}', " \
-      "aligner: '#{self.aligner}', " \
+    "aligner: '#{self.aligner}', " \
       "roi_start: '#{self.roi_start}', " \
       "roi_end: '#{self.roi_end}'"
   end

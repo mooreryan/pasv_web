@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Refs fname</th>
-      <th>Queries fname</th>
+      <th>Ref File</th>
+      <th>Query File</th>
       <th>Aligner</th>
       <th>Roi start</th>
       <th>Roi end</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @pasvs.each do |pasv| %>
       <tr>
-        <td><%= pasv.refs_fname %></td>
-        <td><%= pasv.queries_fname %></td>
+        <td><%= pasv.ref_file %></td>
+        <td><%= pasv.query_file %></td>
         <td><%= pasv.aligner %></td>
         <td><%= pasv.roi_start %></td>
         <td><%= pasv.roi_end %></td>

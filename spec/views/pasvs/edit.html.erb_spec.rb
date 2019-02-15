@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe "pasvs/edit", type: :view do
   before(:each) do
     @pasv = assign(:pasv, Pasv.create!(
-      :refs_fname => "MyString",
-      :queries_fname => "MyString",
       :aligner => "MyString",
       :roi_start => 1,
       :roi_end => 1
@@ -15,10 +13,6 @@ RSpec.describe "pasvs/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", pasv_path(@pasv), "post" do
-
-      assert_select "input[name=?]", "pasv[refs_fname]"
-
-      assert_select "input[name=?]", "pasv[queries_fname]"
 
       assert_select "input[name=?]", "pasv[aligner]"
 

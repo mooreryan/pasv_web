@@ -69,6 +69,6 @@ class PasvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pasv_params
-      params.require(:pasv).permit(:refs_fname, :queries_fname, :aligner, :roi_start, :roi_end)
+      params.require(:pasv).permit(:aligner, :roi_start, :roi_end, :query_file, :ref_file)
     end
 end
