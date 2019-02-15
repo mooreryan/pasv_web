@@ -10,6 +10,14 @@ class PasvsController < ApplicationController
   # GET /pasvs/1
   # GET /pasvs/1.json
   def show
+    if @pasv.ref_file.attached?
+      # TODO might be a bad idea if these files are really big!
+      @ref_file_preview = preview_str @pasv.ref_file.download
+    end
+
+    if @pasv.query_file.attached?
+      @query_file_preview = preview_str @pasv.query_file.download
+    end
   end
 
   # GET /pasvs/new
@@ -62,13 +70,20 @@ class PasvsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pasv
-      @pasv = Pasv.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def pasv_params
-      params.require(:pasv).permit(:aligner, :roi_start, :roi_end, :query_file, :ref_file)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pasv
+    @pasv = Pasv.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def pasv_params
+    params.require(:pasv).permit(:aligner, :roi_start, :roi_end, :query_file, :ref_file)
+  end
+
+  def preview_str str
+    max_len = 50
+
+    str.length > max_len ? "#{str[0, max_len - 3]}..." : str
+  end
 end

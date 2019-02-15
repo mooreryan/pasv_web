@@ -1,20 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<% if @pasv.ref_file.attached? %>
-  <!-- @post.image.present? will always return true, use attached? to check presence -->
+<% if @ref_file_preview %>
   <p>
     <strong>Ref file:</strong>
     <br>
-    <%= File.open(ActiveStorage::Blob.service.send(:path_for, @pasv.ref_file.key), "rt").read[0..100].inspect + "..."%>
+    <%= @ref_file_preview %>
   </p>
 <% end %>
 
-<% if @pasv.query_file.attached? %>
-  <!-- @post.image.present? will always return true, use attached? to check presence -->
+<% if @query_file_preview %>
   <p>
     <strong>Query file:</strong>
     <br>
-    <%= File.open(ActiveStorage::Blob.service.send(:path_for, @pasv.query_file.key), "rt").read[0..100].inspect + "..."%>
+    <%= @query_file_preview %>
   </p>
 <% end %>
 
