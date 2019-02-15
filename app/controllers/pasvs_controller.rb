@@ -11,12 +11,11 @@ class PasvsController < ApplicationController
   # GET /pasvs/1.json
   def show
     if @pasv.ref_file.attached?
-      # TODO might be a bad idea if these files are really big!
-      @ref_file_preview = preview_str @pasv.ref_file.download
+      @ref_file_preview = preview_blob @pasv.ref_file
     end
 
     if @pasv.query_file.attached?
-      @query_file_preview = preview_str @pasv.query_file.download
+      @query_file_preview = preview_blob @pasv.query_file
     end
   end
 
@@ -81,9 +80,12 @@ class PasvsController < ApplicationController
     params.require(:pasv).permit(:aligner, :roi_start, :roi_end, :query_file, :ref_file)
   end
 
-  def preview_str str
+  def preview_blob blob
     max_len = 50
 
-    str.length > max_len ? "#{str[0, max_len - 3]}..." : str
+    # Use the block to stream rather than read into memory!
+    blob.download do |data|
+      return data.length > max_len ? "#{data[0, max_len - 3]}..." : data
+    end
   end
 end
